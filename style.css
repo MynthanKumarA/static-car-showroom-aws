@@ -1,0 +1,501 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500&display=swap');
+
+:root {
+    --primary-color: #0F3D3E; /* Dark Green - Matches Mustang Green */
+    --secondary-color: #C0C0C0; /* Silver/Light Grey - Complements Black */
+    --accent-color: #E2B04E; /* A subtle gold/amber for highlights, reminiscent of chrome or an accent color */
+    --text-light: #F5F5F5; /* Off-white for light text on dark backgrounds */
+    --text-dark: #333; /* Dark grey for text on light backgrounds */
+    --black: #1A1A1A; /* Deep black for backgrounds/accents */
+    --mustang-black: #0D0D0D; /* Even darker black for the car itself */
+
+    --btn-hover-dark: #0A2B2C; /* Darker green for button hover */
+    --btn-hover-light: #BFBFBF; /* Slightly darker grey for secondary button hover */
+
+    --transition-speed: 0.3s ease;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--text-light);
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-dark {
+    background-color: var(--black);
+    color: var(--text-light);
+}
+
+h1, h2, h3 {
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.5em;
+    color: var(--text-light);
+}
+
+h2 {
+    font-size: 2.8em;
+    color: var(--primary-color);
+}
+.bg-dark h2 {
+    color: var(--accent-color);
+}
+
+h3 {
+    font-size: 1.8em;
+    color: var(--text-dark);
+}
+.bg-dark h3 {
+    color: var(--text-light);
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-hover-dark);
+    border-color: var(--btn-hover-dark);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--btn-hover-light);
+    border-color: var(--btn-hover-light);
+    transform: translateY(-3px);
+}
+
+/* Header & Navigation */
+.main-header {
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent for background visibility */
+    color: var(--text-light);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color var(--transition-speed);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width var(--transition-speed);
+}
+
+.main-nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background-color: var(--text-light);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: all var(--transition-speed);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light);
+    text-align: center;
+    background: url('images/mustang-1967-black-green.jpg') no-repeat center center/cover;
+    /* This is where your high-quality Mustang image goes */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+/* Featured Cars */
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.car-card {
+    background-color: var(--text-light);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    padding-bottom: 20px; /* Space for button */
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.car-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.car-card h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.car-card p {
+    font-size: 0.95em;
+    color: var(--text-dark);
+    padding: 0 20px;
+    text-align: center;
+}
+
+.car-card .btn {
+    margin-top: 20px;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* About Us & Services */
+.about-us p, .service-grid {
+    text-align: center;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.service-item {
+    background-color: var(--mustang-black); /* Darker background for service items */
+    color: var(--text-light);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.service-item:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.service-item h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    color: var(--secondary-color);
+}
+
+/* Inventory Preview (Simple Gallery/Slider) */
+.inventory-preview .gallery-slider {
+    display: flex;
+    overflow-x: scroll; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to images */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    gap: 20px;
+    margin-top: 50px;
+    padding-bottom: 20px; /* Space for scrollbar */
+}
+
+.inventory-preview .gallery-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.inventory-preview .gallery-slider::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.inventory-preview .gallery-slider::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.inventory-preview .gallery-slider img {
+    flex-shrink: 0; /* Prevent images from shrinking */
+    width: 350px; /* Adjust as needed */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: center; /* Snap images to center */
+    transition: transform var(--transition-speed);
+}
+
+.inventory-preview .gallery-slider img:hover {
+    transform: scale(1.03);
+}
+
+.inventory-preview .btn {
+    margin-top: 40px;
+}
+
+
+/* CTA Contact */
+.cta-contact {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+}
+
+.cta-contact h2 {
+    color: var(--accent-color);
+}
+
+.cta-contact p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--mustang-black);
+    color: var(--secondary-color);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-footer p {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-links img {
+    width: 28px;
+    height: 28px;
+    transition: transform var(--transition-speed);
+}
+
+.social-links img:hover {
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2.8em;
+    }
+    h2 {
+        font-size: 2.2em;
+    }
+    .main-nav {
+        display: none; /* Hide traditional nav on smaller screens */
+    }
+
+    .main-header .container {
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: flex; /* Show hamburger menu */
+    }
+
+    /* JavaScript will toggle a class like 'nav-open' on body or nav */
+    .main-nav.nav-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px; /* Below header */
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px 0;
+        border-top: 1px solid var(--accent-color);
+    }
+
+    .main-nav.nav-open ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-nav.nav-open ul li {
+        margin: 15px 0;
+    }
+
+    .car-grid, .service-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+
+    .inventory-preview .gallery-slider img {
+        width: 80%; /* Make images wider for better mobile viewing */
+        margin: 0 auto; /* Center images if only one per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    p {
+        font-size: 0.95em;
+    }
+    .hero-content .btn {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo a {
+        font-size: 1.5em;
+    }
+    .hero-content {
+        padding: 15px;
+    }
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+    .hero-content p {
+        font-size: 0.9em;
+    }
+    .btn {
+        padding: 10px 20px;
+    }
+}
